@@ -21,15 +21,14 @@ _LOGGER = logging.getLogger(__name__)
 CONF_SENSORS = 'sensors'
 
 SENSOR_SCHEMA = vol.Schema({
-    cv.slug: vol.Schema({
         vol.Required(CONF_VALUE_TEMPLATE): cv.template,
         vol.Optional(ATTR_FRIENDLY_NAME): cv.string,
-        vol.Optional(ATTR_UNIT_OF_MEASUREMENT): vol.Coerce(str),
-        vol.Optional(ATTR_ENTITY_ID): cv.entity_ids})
+        vol.Optional(ATTR_UNIT_OF_MEASUREMENT): vol.Coerce(cv.string),
+        vol.Optional(ATTR_ENTITY_ID): cv.entity_ids
     })
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
-    vol.Required(CONF_SENSORS): vol.All(dict, SENSOR_SCHEMA),
+    vol.Required(CONF_SENSORS): {cv.slug: SENSOR_SCHEMA},
 })
 
 
