@@ -23,7 +23,7 @@ CONF_SENSORS = 'sensors'
 SENSOR_SCHEMA = vol.Schema({
         vol.Required(CONF_VALUE_TEMPLATE): cv.template,
         vol.Optional(ATTR_FRIENDLY_NAME): cv.string,
-        vol.Optional(ATTR_UNIT_OF_MEASUREMENT): vol.Coerce(cv.string),
+        vol.Optional(ATTR_UNIT_OF_MEASUREMENT): cv.string,
         vol.Optional(ATTR_ENTITY_ID): cv.entity_ids
     })
 
